@@ -1,12 +1,21 @@
-// const fs = require("fs");
-// const input = fs.readFileSync(0, "utf-8").toString().split("\n");
+let fs = require("fs");
+let input = fs.readFileSync("/dev/stdin").toString().split("\n");
 
-// const N = input[0];
-// const nums = input[1].split(" ");
+let count = Number(input[0]);
+let nums = input[1].split(" ");
 
-// console.log(Math.min(nums) + " " + Math.max(nums))
+let numbers = nums.map(function (cur) {
+  return Number(cur);
+});
 
-
-const days = ["Mon", "Tue", "Wed", "Thus", "Fri"];
-
-const smileDays = days.map(function (currentValue, index, array) { console.log(array) });
+let max = numbers[0];
+let min = numbers[0];
+for (let i = 1; i < count; i++) {
+  if (max < numbers[i]) {
+    max = numbers[i];
+  }
+  if (min > numbers[i]) {
+    min = numbers[i];
+  }
+}
+console.log(`${min} ${max}`);
